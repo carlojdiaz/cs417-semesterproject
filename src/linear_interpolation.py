@@ -9,7 +9,7 @@ def linear_interpolation():
     Driver function for piecewise linear interpolation
     """
     input_temps = sys.argv[1]
-    base_name = sys.argv[1]
+    base_name = sys.argv[1][0:len(sys.argv[1]) - 4]
     time=[]
 
     # will contain all the temperature values of each core
@@ -97,7 +97,7 @@ def write_output(core_interpolated_lines, core_number, base_name):
         generate a text file, titled with its respective core number, and write all the lines between each point
     """
     index = 0
-    with open(f"{base_name}-core-{core_number}.txt", 'w') as wf:
+    with open(f"{base_name}-core-{core_number}-interpolation.txt", 'w') as wf:
         for data in core_interpolated_lines:
             time_1 = data[0][0]
             time_2 = data[0][1]
